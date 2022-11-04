@@ -1,2 +1,3 @@
 src/app/__pycache__/**
 .venv/**
+src/db.sqlite3

@@ -15,3 +15,22 @@ CONTAINER_ID = $(shell podman ps | grep 'elplebiscito' | awk '{print $$1}')
 stop:
 	podman stop $(CONTAINER_ID)
 
+
+## Django-related
+
+migrations: migrations-run migrations-show migrations-migrate
+
+migrations-run: 
+	python3 src/manage.py makemigrations
+
+migrations-show: 
+	python3 src/manage.py showmigrations
+
+migrations-migrate: 
+	python3 src/manage.py migrate
+	make migrations-show
+
+
+runserver:
+	python3 src/manage.py runserver
+
