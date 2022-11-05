@@ -10,7 +10,7 @@ push:
 run:
 	podman run -d -p 8000:8000 $(REGISTRY):$(GIT_REF_TAG)
 
-CONTAINER_ID = $(shell podman ps | grep 'elplebiscito' | awk '{print $$1}')
+CONTAINER_ID = $(shell podman ps | grep '$(REGISTRY)' | awk '{print $$1}')
 
 stop:
 	podman stop $(CONTAINER_ID)
